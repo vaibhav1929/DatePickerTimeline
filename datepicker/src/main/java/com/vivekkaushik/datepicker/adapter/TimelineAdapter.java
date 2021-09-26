@@ -30,10 +30,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     private View selectedView;
     private int selectedPosition;
-
-    public TimelineAdapter(TimelineView timelineView, int selectedPosition) {
+    private int futureDatesCount;
+    public TimelineAdapter(TimelineView timelineView, int selectedPosition, int futureDatesCount) {
         this.timelineView = timelineView;
         this.selectedPosition = selectedPosition;
+        this.futureDatesCount = futureDatesCount;
     }
 
     @NonNull
@@ -92,7 +93,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return Integer.MAX_VALUE;
+        return futureDatesCount;
     }
 
     public void disableDates(Date[] dates) {
