@@ -123,6 +123,7 @@ public class TimelineView extends RecyclerView {
             long diff =  activeDate.getTime().getTime() - initialDate.getTime();
             int position = (int) (diff / (1000 * 60 * 60 * 24));
             adapter.setSelectedPosition(position);
+            this.getLayoutManager().scrollToPosition(position);
             invalidate();
         } catch (ParseException e) {
             e.printStackTrace();
