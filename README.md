@@ -1,8 +1,12 @@
 ## Additional features added-->
 Autoscroll to active date.
-[upcoming]
+
+### [upcoming]
+
 set limitation on future dates.
+
 able to change orientation [vertical or horizontal]
+
 able change in selected item background
 
 # DatePickerTimeline
