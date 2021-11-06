@@ -18,13 +18,16 @@ import java.util.Date;
 public class TimelineView extends RecyclerView {
     private static final String TAG = "TimelineView";
     private TimelineAdapter adapter;
-
+    private int futureDatesCount;
+    private boolean showMonth;
     private int monthTextColor, dateTextColor, dayTextColor, selectedColor, disabledColor;
 //    private float monthTextSize, dateTextSize, dayTextSize;
     private int year, month, date;
 
-    public TimelineView(@NonNull Context context) {
+    public TimelineView(@NonNull Context context,int futureDatesCount,boolean showMonth) {
         super(context);
+        this.futureDatesCount = futureDatesCount;
+        this.showMonth = showMonth;
         init();
     }
 
@@ -45,7 +48,7 @@ public class TimelineView extends RecyclerView {
         setHasFixedSize(true);
         setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL,
                 false));
-        adapter = new TimelineAdapter(this, -1);
+        adapter = new TimelineAdapter(this, -1, futureDatesCount, showMonth);
         setAdapter(adapter);
     }
 
