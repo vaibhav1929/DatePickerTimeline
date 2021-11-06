@@ -17,7 +17,7 @@ import java.util.Date;
 
 public class TimelineView extends RecyclerView {
     private static final String TAG = "TimelineView";
-    private TimelineAdapter adapter;
+    public TimelineAdapter adapter;
     public int futureDatesCount;
     public boolean showMonth;
     private int monthTextColor, dateTextColor, dayTextColor, selectedColor, disabledColor;
