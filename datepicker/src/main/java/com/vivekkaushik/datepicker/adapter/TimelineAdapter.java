@@ -72,9 +72,20 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
                     selectedPosition = position;
                     selectedView = v;
 
-                    if (listener != null) listener.onDateSelected(year, month, day, dayOfWeek);
+                    if (listener != null){
+                        if(showMonth)
+                            listener.onDateSelected(year, month, day, dayOfWeek);
+                        else
+                            listener.onDateSelected(-1, -1, position+1, -1);
+                        
+                    } 
                 } else {
-                    if (listener != null) listener.onDisabledDateSelected(year, month, day, dayOfWeek, isDisabled);
+                    if (listener != null){
+                        if(showMonth)
+                            listener.onDisabledDateSelected(year, month, day, dayOfWeek, isDisabled);
+                        else
+                            listener.onDisabledDateSelected(-1, -1, position+1, -1, isDisabled);
+                    } 
                 }
             }
         });
