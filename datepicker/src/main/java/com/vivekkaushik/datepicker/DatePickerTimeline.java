@@ -14,7 +14,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class DatePickerTimeline extends LinearLayout {
-    private TimelineView timelineView;
+    public TimelineView timelineView;
 
     public DatePickerTimeline(Context context) {
         super(context);
