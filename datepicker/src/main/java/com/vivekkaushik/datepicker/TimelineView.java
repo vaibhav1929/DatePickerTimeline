@@ -121,6 +121,7 @@ public class TimelineView extends RecyclerView {
      * @param activeDate active Date
      */
     public void setActiveDate(Calendar activeDate) {
+
         if(showMonth){
             try {
                 Date initialDate = new SimpleDateFormat("yyyy-MM-dd")
@@ -141,7 +142,6 @@ public class TimelineView extends RecyclerView {
                 invalidate();
         }
         
-
     }
 
     public void deactivateDates(Date[] deactivatedDates) {
