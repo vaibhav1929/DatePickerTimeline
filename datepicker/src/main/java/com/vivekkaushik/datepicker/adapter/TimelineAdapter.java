@@ -106,7 +106,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return (futureDatesCount < 0)? Integer.MAX_VALUE:futureDatesCount;
+        return (futureDatesCount <= 0)? Integer.MAX_VALUE:futureDatesCount;
     }
 
     public void disableDates(Date[] dates) {
