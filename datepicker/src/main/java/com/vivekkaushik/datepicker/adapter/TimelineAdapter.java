@@ -31,10 +31,12 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
     private View selectedView;
     private int selectedPosition;
     private int futureDatesCount;
-    public TimelineAdapter(TimelineView timelineView, int selectedPosition, int futureDatesCount) {
+    private boolean showMonth;
+    public TimelineAdapter(TimelineView timelineView, int selectedPosition, int futureDatesCount, boolean showMonth) {
         this.timelineView = timelineView;
         this.selectedPosition = selectedPosition;
         this.futureDatesCount = futureDatesCount;
+        this.showMonth = showMonth;
     }
 
     @NonNull
@@ -121,11 +123,17 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             monthView.setTextColor(timelineView.getMonthTextColor());
             dateView.setTextColor(timelineView.getDateTextColor());
             dayView.setTextColor(timelineView.getDayTextColor());
-
-            dayView.setText(WEEK_DAYS[dayOfWeek].toUpperCase(Locale.US));
-            monthView.setText(MONTH_NAME[month].toUpperCase(Locale.US));
-            dateView.setText(String.valueOf(day));
-
+            
+            if(showMonth){
+                dayView.setText(WEEK_DAYS[dayOfWeek].toUpperCase(Locale.US));
+                monthView.setText(MONTH_NAME[month].toUpperCase(Locale.US));
+                dateView.setText(String.valueOf(day));
+            }
+            else{
+                monthView.setText("DAY");
+                dateView.setText(""+position+1);
+            }
+            
             if (selectedPosition == position) {
                 rootView.setBackground(timelineView.getResources().getDrawable(R.drawable.background_shape));
                 selectedView = rootView;
