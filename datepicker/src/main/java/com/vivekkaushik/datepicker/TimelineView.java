@@ -121,17 +121,26 @@ public class TimelineView extends RecyclerView {
      * @param activeDate active Date
      */
     public void setActiveDate(Calendar activeDate) {
-        try {
-            Date initialDate = new SimpleDateFormat("yyyy-MM-dd")
-                    .parse(year + "-" + (month + 1) + "-" + this.date);
-            long diff =  activeDate.getTime().getTime() - initialDate.getTime();
-            int position = (int) (diff / (1000 * 60 * 60 * 24));
-            adapter.setSelectedPosition(position);
-            this.getLayoutManager().scrollToPosition(position);
-            invalidate();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if(showMonth){
+            try {
+                Date initialDate = new SimpleDateFormat("yyyy-MM-dd")
+                        .parse(year + "-" + (month + 1) + "-" + this.date);
+                long diff =  activeDate.getTime().getTime() - initialDate.getTime();
+                int position = (int) (diff / (1000 * 60 * 60 * 24));
+                adapter.setSelectedPosition(position);
+                this.getLayoutManager().scrollToPosition(position);
+                invalidate();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
+        else{
+                int position = activeDate.get(Calendar.DAY_OF_YEAR);
+                adapter.setSelectedPosition(position-1);
+                this.getLayoutManager().scrollToPosition(position-1);
+                invalidate();
+        }
+        
 
     }
 
