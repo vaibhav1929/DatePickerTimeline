@@ -24,10 +24,8 @@ public class TimelineView extends RecyclerView {
 //    private float monthTextSize, dateTextSize, dayTextSize;
     private int year, month, date;
 
-    public TimelineView(@NonNull Context context,int futureDatesCount,boolean showMonth) {
+    public TimelineView(@NonNull Context context) {
         super(context);
-        this.futureDatesCount = futureDatesCount;
-        this.showMonth = showMonth;
         init();
     }
 
@@ -41,7 +39,10 @@ public class TimelineView extends RecyclerView {
         init();
     }
 
-    void init() {
+    public void init(int futureDatesCount = -1,boolean showMonth = true) {
+        this.futureDatesCount = futureDatesCount;
+        this.showMonth = showMonth;
+        
         year = 1970;
         month = 0;
         date = 1;
