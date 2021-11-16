@@ -47,6 +47,16 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
                 .inflate(R.layout.timeline_item_layout, parent, false);
         return new TimelineAdapter.ViewHolder(view);
     }
+    
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+       return position;
+    }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
