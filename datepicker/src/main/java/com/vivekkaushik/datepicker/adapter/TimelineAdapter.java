@@ -37,6 +37,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         this.selectedPosition = selectedPosition;
         this.futureDatesCount = futureDatesCount;
         this.showMonth = showMonth;
+        Log.e(TAG,this.showMonth+"");
     }
 
     @NonNull
