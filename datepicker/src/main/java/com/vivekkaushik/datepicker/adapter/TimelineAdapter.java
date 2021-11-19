@@ -67,7 +67,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         final int month = calendar.get(Calendar.MONTH);
         final int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        final int dayYear = calender.get(Calendar.DAY_OF_YEAR);
+        final int dayYear = calendar.get(Calendar.DAY_OF_YEAR);
 
         final boolean isDisabled = holder.bind(month, day, dayOfWeek, dayYear, year, position);
 
