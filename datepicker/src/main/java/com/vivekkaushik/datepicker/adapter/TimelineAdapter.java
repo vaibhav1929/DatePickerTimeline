@@ -67,9 +67,9 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
         final int month = calendar.get(Calendar.MONTH);
         final int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int dayYear = calender.get(Calendar.DAY_OF_YEAR);
 
-
-        final boolean isDisabled = holder.bind(month, day, dayOfWeek, year, position);
+        final boolean isDisabled = holder.bind(month, day, dayOfWeek, dayYear, year, position);
 
         holder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,18 +84,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
                     selectedView = v;
 
                     if (listener != null){
-                        if(showMonth)
                             listener.onDateSelected(year, month, day, dayOfWeek);
-                        else
-                            listener.onDateSelected(-1, -1, position+1, -1);
-                        
                     } 
                 } else {
                     if (listener != null){
-                        if(showMonth)
                             listener.onDisabledDateSelected(year, month, day, dayOfWeek, isDisabled);
-                        else
-                            listener.onDisabledDateSelected(-1, -1, position+1, -1, isDisabled);
                     } 
                 }
             }
@@ -141,7 +134,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             rootView = itemView.findViewById(R.id.rootView);
         }
 
-        boolean bind(int month, int day, int dayOfWeek, int year, int position) {
+        boolean bind(int month, int day, int dayOfWeek, int dayYear, int year, int position) {
             monthView.setTextColor(timelineView.getMonthTextColor());
             dateView.setTextColor(timelineView.getDateTextColor());
             dayView.setTextColor(timelineView.getDayTextColor());
@@ -153,7 +146,7 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.ViewHo
             }
             else{
                 monthView.setText("DAY");
-                dateView.setText(""+position+1);
+                dateView.setText(""+dayYear);
             }
             
             if (selectedPosition == position) {
